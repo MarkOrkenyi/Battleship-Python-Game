@@ -9,4 +9,9 @@ If the enemy player has a ship on the exact coordinate, then it will be a hit an
 
 When a Player destroys all of the enemy's ships, he/she wins the game.
 
-
+[url=https://imgbb.com/][img]https://image.ibb.co/c4bvMF/attack.png[/img][/url]
+[url=https://imgbb.com/][img]https://image.ibb.co/dp7PFa/HorV.png[/img][/url]
+[url=https://imgbb.com/][img]https://image.ibb.co/c4ND8v/Placed.png[/img][/url]
+[url=https://ibb.co/jefdaa][img]https://preview.ibb.co/bZHfov/start.png[/img][/url]
+[url=https://ibb.co/jRjh1F][img]https://preview.ibb.co/i1r6Tv/winner.png[/img][/url]
+[url=https://imgbb.com/]post image free[/url]
