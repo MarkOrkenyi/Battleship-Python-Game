@@ -1,0 +1,6 @@
+1. improve “functional programming” according to the used functions the original codefile should be splitted into different files 
+2. inform the attacking player if one of the attacked ships were fully sank
+3. make the possibility to play aginst AI
+4. add some sounds to the game to improve gaming experience
+5. improved game graphics like show the ships with different length with different carchters
+
