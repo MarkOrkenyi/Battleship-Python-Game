@@ -1,0 +1,5 @@
+Battleship Python Game
+
+This game is based on the concept of the well known Battleship, or Torpedo game. The goal is to destroy all the enemy ships, before the enemy manages to find and destroy the player's.
+After the start screen, the player has to select the position of the ships. This is done by entering first H(for horizontal) or V(for vertical). This will specify whether the ship you want to place is placed horizontally, or vertically.
+Next is the origin position. If Horizontal placement is selected, the ship will be placed from
