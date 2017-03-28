@@ -1,4 +1,4 @@
-#define lists
+#define listsss
 p1ship = []
 p2ship= []
 p1attack = []
