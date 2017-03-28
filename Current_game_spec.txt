@@ -1,5 +1,12 @@
 Battleship Python Game
 
 This game is based on the concept of the well known Battleship, or Torpedo game. The goal is to destroy all the enemy ships, before the enemy manages to find and destroy the player's.
-After the start screen, the player has to select the position of the ships. This is done by entering first H(for horizontal) or V(for vertical). This will specify whether the ship you want to place is placed horizontally, or vertically.
-Next is the origin position. If Horizontal placement is selected, the ship will be placed from
+After the start screen, the player has to select the position of the ships. This is done by entering first H(for horizontal) or V(for vertical). This will specify whether the ship you want to place is placed horizontally, or vertically. You can see the length of the ship you are currently placing.
+Next is the origin position. If Horizontal placement is selected, the ship's first coordinate will be inserted into the given position, then the program will automatically place the remaining coordinates on the left side of the origin. For Vertical placement, the same is done, but instead, it is placed downwards from the origin. The coordinates of a ship is marked with an "O".
+This goes on, until the player has no ship left to place(usually 5 ships). Then the second player places their ships.
+Next is the Battling stage, where each player can see their own board, with their ships at the bottom, and an "attackboard", which shows the previous hits or misses. A player can attack the other player's board, by entering a coordinate.
+If the enemy player has a ship on the exact coordinate, then it will be a hit and is marked by a green "V" on the attacking player's "attackboard", and with a red "V" on the enemy's "shipboard". If it's a miss, then it is marked by an "X". After an attack, the boards change to the other player's board, and another attack round begins.
+
+When a Player destroys all of the enemy's ships, he/she wins the game.
+
+
