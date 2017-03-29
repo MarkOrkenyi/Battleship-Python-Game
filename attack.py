@@ -1,11 +1,13 @@
 import os
 import time
 import boardhandle
+import prints
+import random
 p1attack = []
 p2attack = []
 
 
-def attack(playernumber, currentboard):
+def attack(playernumber, currentboard, AI):
     validrow = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     validcolumn = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     os.system('clear')
@@ -18,25 +20,34 @@ def attack(playernumber, currentboard):
         print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
         boardhandle.print_board(boardhandle.p1ship)
     else:
-        attackboard = boardhandle.p2attack
-        shipboard = boardhandle.p1ship
-        print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
-        print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
-        boardhandle.print_board(attackboard)
-        print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
-        boardhandle.print_board(boardhandle.p2ship)
+        if (playernumber == 2) and (AI == 1):
+            attackboard = boardhandle.p2attack
+            shipboard = boardhandle.p1ship
+        else:
+            attackboard = boardhandle.p2attack
+            shipboard = boardhandle.p1ship
+            print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
+            print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
+            boardhandle.print_board(attackboard)
+            print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
+            boardhandle.print_board(boardhandle.p2ship)
 
     while True:
-        attackcord = input("Enter a coordinate to attack (ex. A4): ")
+        if (playernumber == 2) and (AI == 1):
+            x_ai = str(random.choice(validcolumn))
+            y_ai = str(random.choice(validrow))
+            attackcord = x_ai + y_ai
+        else:
+            attackcord = input("Enter a coordinate to attack (ex. A4): ")
 
-        try:
-            int(attackcord[1])
-        except IndexError:
-            print ('Enter a valid coordinate!')
-            continue
-        except ValueError:
-            print ('Enter a valid coordinate!')
-            continue
+            try:
+                int(attackcord[1])
+            except IndexError:
+                print ('Enter a valid coordinate!')
+                continue
+            except ValueError:
+                print ('Enter a valid coordinate!')
+                continue
 
         if len(attackcord) == 2:
             if attackcord[0] in validcolumn and int(attackcord[1]) in validrow:
@@ -69,11 +80,14 @@ def attack(playernumber, currentboard):
             print('\x1b[6;30;42m' + 'Player ' + str(playernumber) + '\x1b[0m')
         else:
             print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
-        print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
-        boardhandle.print_board(attackboard)
-        print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
-        boardhandle.print_board(boardhandle.p1ship)
-        time.sleep(1)
+        if (playernumber == 2) and (AI == 1):
+            pass
+        else:
+            print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
+            boardhandle.print_board(attackboard)
+            print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
+            boardhandle.print_board(boardhandle.p1ship)
+            time.sleep(1)
     elif shipboard[y][x] == 'O':
         print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
         attackboard[y][x] = '\x1b[1;32;40m' + "V" + '\x1b[0m'
@@ -83,14 +97,17 @@ def attack(playernumber, currentboard):
             print('\x1b[6;30;42m' + 'Player ' + str(playernumber) + '\x1b[0m')
         else:
             print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
-        print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
-        boardhandle.print_board(attackboard)
-        print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
-        boardhandle.print_board(boardhandle.p1ship)
-        time.sleep(1)
+        if (playernumber == 2) and (AI == 1):
+            pass
+        else:
+            print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
+            boardhandle.print_board(attackboard)
+            print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
+            boardhandle.print_board(boardhandle.p2ship)
+            time.sleep(1)
 
 
-def nextplayer(playernumber):
+def nextplayer(playernumber, AI):
     os.system('clear')
     waittimer = 1
     print('\x1b[1;31;40m' + "Player", playernumber, "'s turn will begin in", waittimer, " seconds!" + '\x1b[0m')

@@ -5,18 +5,8 @@ import settings
 import attack
 import boardhandle
 import shipboard_setup
-
-#p1ship = []
-#p2ship = []
-#p1attack = []
-#p2attack = []
-#shipcord0 = []
-
-
-# boardhandle.empty_board(p1ship)
-# boardhandle.empty_board(p2ship)
-# boardhandle.empty_board(p1attack)
-# boardhandle.empty_board(p2attack)
+p1shipcord = []
+p2shipcord = []
 
 ships = 2
 
@@ -27,8 +17,10 @@ def main():
     start = input("")
     prints.selecthelp(ships)
     start = input("")
+    AI = prints.ai_or_player()
     currentboard = boardhandle.p1ship
-    shipboard_setup.select_ships(1, ships, currentboard)
+    shipboard_setup.select_ships(1, ships, currentboard, AI)
+    # a = input()
     os.system('clear')
     print()
     print()
@@ -36,7 +28,7 @@ def main():
     confirm = input("Press enter to continue")
     currentboard = boardhandle.p2ship
     shipcord = []
-    shipboard_setup.select_ships(2, ships, currentboard)
+    shipboard_setup.select_ships(2, ships, currentboard, AI)
     os.system('clear')
     print()
     print()
@@ -44,12 +36,16 @@ def main():
     confirm = input("Press enter to continue")
     os.system('clear')
     # END OF SHIP SELECTION
+    # print("p1shipcord:", shipboard_setup.p1shipcord)
+    # print("p2shipcord:", shipboard_setup.p2shipcord)
+    # print(shipboard_setup.add_to_pshipcord)
+    # a = input()
     playernumber = 1
     while True:
         alivep1 = 0
         alivep2 = 0
-        attack.nextplayer(playernumber)
-        attack.attack(playernumber, currentboard)
+        attack.nextplayer(playernumber, AI)
+        attack.attack(playernumber, currentboard, AI)
         if playernumber == 1:
             playernumber = 2
         else:

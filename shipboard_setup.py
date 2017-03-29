@@ -1,54 +1,63 @@
 import os
 import boardhandle
+import random
+import copy
 shiplength = [2, 3, 3, 2, 1]
 shipcord = []
-pshipcord = []
+
 
 # Puts a ship onto the current player's board
 
 
-def addship(length, currentboard, ships):
+def addship(length, currentboard, ships, playernumber, AI):
     shipcord0 = []
     validrow = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     validcolumn = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+    HV = ["H", "V"]
     print("Current ship length:", length)
-    orient = input("Enter H or V: ")
+    if (playernumber == 2) and (AI == 1):
+        orient = random.choice(HV)
+    else:
+        orient = input("Enter H or V: ")
+        while True:
+            if orient == "V":
+                break
+            elif orient == "H":
+                break
+            else:
+                print("Please enter H for Horizontal, or V for Vertical")
+                orient = input("Enter H or V: ")
     while True:
-        if orient == "V":
-            break
-        elif orient == "H":
-            break
+        if (playernumber == 2) and (AI == 1):
+            x_ai = str(random.choice(validcolumn))
+            y_ai = str(random.choice(validrow))
+            c = x_ai + y_ai
         else:
-            print("Please enter H for Horizontal, or V for Vertical")
-            orient = input("Enter H or V: ")
+            c = input("Enter the origin of your ship (ex. A4): ")
+            try:
+                int(c[1])
+            except IndexError:
+                print ('Enter a valid coordinate!')
+                continue
+            except ValueError:
+                print ('Enter a valid coordinate!')
+                continue
 
-    while True:
-        c = input("Enter the origin of your ship (ex. A4): ")
-
-        try:
-            int(c[1])
-        except IndexError:
-            print ('Enter a valid coordinate!')
-            continue
-        except ValueError:
-            print ('Enter a valid coordinate!')
-            continue
-
-        if len(c) == 2:
-            if c[0] in validcolumn and int(c[1]) in validrow:
-                print("")
+            if len(c) == 2:
+                if c[0] in validcolumn and int(c[1]) in validrow:
+                    print("")
+                else:
+                    print ('Enter a valid coordinate!')
+                    continue
+            elif len(c) == 3:
+                if c[0] in validcolumn and int(c[1] + c[2]) in validrow:
+                    print("")
+                else:
+                    print ('Enter a valid coordinate!')
+                    continue
             else:
                 print ('Enter a valid coordinate!')
                 continue
-        elif len(c) == 3:
-            if c[0] in validcolumn and int(c[1] + c[2]) in validrow:
-                print("")
-            else:
-                print ('Enter a valid coordinate!')
-                continue
-        else:
-            print ('Enter a valid coordinate!')
-            continue
         x = int(currentboard[0].index(c[0]))
         if len(c) == 2:
             y = int(c[1])
@@ -102,14 +111,31 @@ def addship(length, currentboard, ships):
         shipcord.append(shipcord0)
 
 
-def select_ships(playernumber, ships, currentboard):
+def select_ships(playernumber, ships, currentboard, AI):
     for a in range(ships):
         os.system('clear')
         if playernumber == 1:
             print('\x1b[6;30;42m' + 'Player ' + str(playernumber) + '\x1b[0m')
-        else:
-            print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
+        elif playernumber == 2:
+            if AI == 1:
+                print('\x1b[6;30;43m' + "Computer" + '\x1b[0m')
+            else:
+                print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
         print()
         boardhandle.print_board(currentboard)
-        addship(shiplength[a], currentboard, ships)
-    pshipcord.append(shipcord)
+        addship(shiplength[a], currentboard, ships, playernumber, AI)
+
+
+'''       
+add_to_pshipcord(playernumber, shipcord)
+
+
+def add_to_pshipcord(playernumber, shipcord):
+    if playernumber == 1:
+        p1shipcord = copy.deepcopy(shipcord)
+        return p1shipcord
+
+
+def print_shipcords():
+    print(add_to_pshipcord()
+'''
