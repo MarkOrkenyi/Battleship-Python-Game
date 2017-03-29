@@ -19,35 +19,24 @@ def main():
     start = input("")
     AI = prints.ai_or_player()
     currentboard = boardhandle.p1ship
-
     p1shipcord = shipboard_setup.select_ships(1, ships, currentboard, AI)
-    print(p1shipcord)
-    w = input("ez a mainből a 1. shipcord")
-
     os.system('clear')
     print()
     print()
     boardhandle.print_board(boardhandle.p1ship)
     confirm = input("Press enter to continue")
     currentboard = boardhandle.p2ship
-
-    #shipcord = []
-
     p2shipcord = shipboard_setup.select_ships(2, ships, currentboard, AI)
-    print (p2shipcord)
-    w = input("ez a mainből a 2. shipcord")
-
     os.system('clear')
     print()
     print()
-    boardhandle.print_board(boardhandle.p2ship)
-    confirm = input("Press enter to continue")
-    os.system('clear')
+    if AI == 1:
+        pass
+    else:
+        boardhandle.print_board(boardhandle.p2ship)
+        confirm = input("Press enter to continue")
+        os.system('clear')
     # END OF SHIP SELECTION
-    # print("p1shipcord:", shipboard_setup.p1shipcord)
-    # print("p2shipcord:", shipboard_setup.p2shipcord)
-    # print(shipboard_setup.add_to_pshipcord)
-    # a = input()
     playernumber = 1
     while True:
         alivep1 = 0
