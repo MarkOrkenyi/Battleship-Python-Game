@@ -19,16 +19,24 @@ def main():
     start = input("")
     AI = prints.ai_or_player()
     currentboard = boardhandle.p1ship
-    shipboard_setup.select_ships(1, ships, currentboard, AI)
-    # a = input()
+
+    p1shipcord = shipboard_setup.select_ships(1, ships, currentboard, AI)
+    print(p1shipcord)
+    w = input("ez a mainből a 1. shipcord")
+
     os.system('clear')
     print()
     print()
     boardhandle.print_board(boardhandle.p1ship)
     confirm = input("Press enter to continue")
     currentboard = boardhandle.p2ship
-    shipcord = []
-    shipboard_setup.select_ships(2, ships, currentboard, AI)
+
+    #shipcord = []
+
+    p2shipcord = shipboard_setup.select_ships(2, ships, currentboard, AI)
+    print (p2shipcord)
+    w = input("ez a mainből a 2. shipcord")
+
     os.system('clear')
     print()
     print()

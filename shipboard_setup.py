@@ -9,7 +9,7 @@ shipcord = []
 # Puts a ship onto the current player's board
 
 
-def addship(length, currentboard, ships, playernumber, AI):
+def addship(length, currentboard, playernumber, AI):
     shipcord0 = []
     validrow = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     validcolumn = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
@@ -112,6 +112,7 @@ def addship(length, currentboard, ships, playernumber, AI):
 
 
 def select_ships(playernumber, ships, currentboard, AI):
+    del shipcord[:]
     for a in range(ships):
         os.system('clear')
         if playernumber == 1:
@@ -123,19 +124,5 @@ def select_ships(playernumber, ships, currentboard, AI):
                 print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
         print()
         boardhandle.print_board(currentboard)
-        addship(shiplength[a], currentboard, ships, playernumber, AI)
-
-
-'''       
-add_to_pshipcord(playernumber, shipcord)
-
-
-def add_to_pshipcord(playernumber, shipcord):
-    if playernumber == 1:
-        p1shipcord = copy.deepcopy(shipcord)
-        return p1shipcord
-
-
-def print_shipcords():
-    print(add_to_pshipcord()
-'''
+        addship(shiplength[a], currentboard, playernumber, AI)
+    return shipcord
