@@ -2,6 +2,7 @@ import os
 import boardhandle
 import random
 import copy
+import sound
 shiplength = [2, 3, 3, 2, 1]
 shipcord = []
 
@@ -125,4 +126,5 @@ def select_ships(playernumber, ships, currentboard, AI):
         print()
         boardhandle.print_board(currentboard)
         addship(shiplength[a], currentboard, playernumber, AI)
+        sound.play_sound("placement")
     return shipcord

@@ -3,6 +3,7 @@ import time
 import boardhandle
 import prints
 import random
+import sound
 p1attack = []
 p2attack = []
 
@@ -75,10 +76,12 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
     if shipboard[y][x] == ' ':
         attackboard[y][x] = "X"
         shipboard[y][x] = "X"
+        sound.play_sound("splash")
 
     elif shipboard[y][x] == 'O':
         attackboard[y][x] = '\x1b[1;32;40m' + "V" + '\x1b[0m'
         shipboard[y][x] = '\x1b[1;31;40m' + "V" + '\x1b[0m'
+        sound.play_sound("hit")
 
     if playernumber == 1:
         os.system('clear')
@@ -89,7 +92,7 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
         boardhandle.print_board(boardhandle.p1ship)
         time.sleep(1)
 
-    elif playernumber == 2:
+    elif (playernumber == 2) and (AI == 0):
         os.system('clear')
         print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
         print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
@@ -97,6 +100,8 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
         print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
         boardhandle.print_board(boardhandle.p2ship)
         time.sleep(1)
+    else:
+        pass
 
         if playernumber == 1:
             for i in range(len(p2shipcord)):
