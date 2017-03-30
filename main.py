@@ -22,8 +22,6 @@ def main():
     currentboard = boardhandle.p1ship
 
     p1shipcord = deepcopy(shipboard_setup.select_ships(1, ships, currentboard, AI))
-    print(p1shipcord)
-    w = input("this p1shipcord in main")
 
     os.system('clear')
     print()
@@ -33,8 +31,6 @@ def main():
     currentboard = boardhandle.p2ship
 
     p2shipcord = deepcopy(shipboard_setup.select_ships(2, ships, currentboard, AI))
-    print(p2shipcord)
-    w = input("this p2shipcord in main")
 
     os.system('clear')
     print()

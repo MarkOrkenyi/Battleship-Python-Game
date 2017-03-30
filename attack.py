@@ -88,30 +88,52 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
             print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
             boardhandle.print_board(boardhandle.p1ship)
             time.sleep(1)
+
     elif shipboard[y][x] == 'O':
         print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
         attackboard[y][x] = '\x1b[1;32;40m' + "V" + '\x1b[0m'
         shipboard[y][x] = '\x1b[1;31;40m' + "V" + '\x1b[0m'
 
-        print("p1shhipcord", p1shipcord)                  # testing the attackcord
-        print("p2shhipcord", p2shipcord)
-        print()
-        print("attackcord", attackcord)
-        print("playernumber", playernumber)
-        w = input()
-        indices = str([i for i, s in enumerate(p2shipcord[0]) if str(attackcord) in s])
-        print("attackcord index", indices)
-        w = input()
-
-
-"""
-        for i in range(len(p2shipcord)):
-            for j in p2shipcord[i]:
-                print("asdf", p2shipcord[p2shipcord.index(i)][p2shipcord.index(j)])
-                # if attackcord in p2shipcord[p2shipcord.index(i)][p2shipcord.index(j)]:
-                #   p2shipcord[p2shipcord.index(i)][p2shipcord.index(j)][-1] = "-"
-        print("p2shhipcord", p2shipcord)
-"""
+        if playernumber == 1:
+            for i in range(len(p2shipcord)):
+                for j in range(len(p2shipcord[i])):
+                    if attackcord in p2shipcord[i][j]:
+                        p2shipcord[i][j] = attackcord + "-"
+        elif playernumber == 2:
+            for i in range(len(p1shipcord)):
+                for j in range(len(p1shipcord[i])):
+                    if attackcord in p1shipcord[i][j]:
+                        p1shipcord[i][j] = attackcord + "-"
+        if playernumber == 1:
+            for i in range(len(p2shipcord)):
+                count = 0
+                for j in range(len(p2shipcord[i])):
+                    if p2shipcord[i][j].count("-"):
+                        count += 1
+                        if count == len(p2shipcord[i]):
+                            for cord in range(len(p2shipcord[i])):
+                                x = int(currentboard[0].index(p2shipcord[i][cord][0]))
+                                if len(attackcord) == 2:
+                                    y = int(p2shipcord[i][cord][1])
+                                elif len(attackcord) == 3:
+                                    y = int(p2shipcord[i][cord][1] + p2shipcord[i][cord][2])
+                                attackboard[y][x] = '\x1b[1;32;45m' + "Y" + '\x1b[0m'
+                                shipboard[y][x] = '\x1b[1;31;45m' + "Y" + '\x1b[0m'
+        elif playernumber == 2:
+            for i in range(len(p1shipcord)):
+                count = 0
+                for j in range(len(p1shipcord[i])):
+                    if p1shipcord[i][j].count("-"):
+                        count += 1
+                        if count == len(p1shipcord[i]):
+                            for cord in range(len(p1shipcord[i])):
+                                x = int(currentboard[0].index(p1shipcord[i][cord][0]))
+                                if len(attackcord) == 2:
+                                    y = int(p1shipcord[i][cord][1])
+                                elif len(attackcord) == 3:
+                                    y = int(p1shipcord[i][cord][1] + p1shipcord[i][cord][2])
+                                attackboard[y][x] = '\x1b[1;32;45m' + "Y" + '\x1b[0m'
+                                shipboard[y][x] = '\x1b[1;31;45m' + "Y" + '\x1b[0m'
 
     os.system('clear')
     if playernumber == 1:
