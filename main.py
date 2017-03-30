@@ -9,7 +9,7 @@ from copy import deepcopy
 import sound
 p1shipcord = []
 p2shipcord = []
-ships = 2
+ships = 5
 
 
 def main():

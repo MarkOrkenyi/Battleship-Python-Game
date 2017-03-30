@@ -33,11 +33,11 @@ def print_board(matrix):
     print()
 
 
+# creates empty lists and boards
 p1ship = []
 p2ship = []
 p1attack = []
 p2attack = []
-
 empty_board(p1ship)
 empty_board(p2ship)
 empty_board(p1attack)

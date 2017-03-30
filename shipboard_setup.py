@@ -3,7 +3,7 @@ import boardhandle
 import random
 import copy
 import sound
-shiplength = [2, 3, 3, 2, 1]
+shiplength = [5, 3, 3, 2, 1]
 shipcord = []
 
 
