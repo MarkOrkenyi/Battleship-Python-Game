@@ -52,10 +52,10 @@ def main():
             playernumber = 2
         else:
             playernumber = 1
-        for i in range(10):
+        for i in range(1, 11):
             if "O" in boardhandle.p1ship[i]:
                 alivep1 += 1
-        for i in range(10):
+        for i in range(1, 11):
             if "O" in boardhandle.p2ship[i]:
                 alivep2 += 1
         if alivep1 < 1:
