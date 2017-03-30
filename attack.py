@@ -75,24 +75,28 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
     if shipboard[y][x] == ' ':
         attackboard[y][x] = "X"
         shipboard[y][x] = "X"
-        os.system('clear')
-        if playernumber == 1:
-            print('\x1b[6;30;42m' + 'Player ' + str(playernumber) + '\x1b[0m')
-        else:
-            print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
-        if (playernumber == 2) and (AI == 1):
-            pass
-        else:
-            print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
-            boardhandle.print_board(attackboard)
-            print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
-            boardhandle.print_board(boardhandle.p1ship)
-            time.sleep(1)
 
     elif shipboard[y][x] == 'O':
-        print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
         attackboard[y][x] = '\x1b[1;32;40m' + "V" + '\x1b[0m'
         shipboard[y][x] = '\x1b[1;31;40m' + "V" + '\x1b[0m'
+
+    if playernumber == 1:
+        os.system('clear')
+        print('\x1b[6;30;42m' + 'Player ' + str(playernumber) + '\x1b[0m')
+        print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
+        boardhandle.print_board(boardhandle.p1attack)
+        print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
+        boardhandle.print_board(boardhandle.p1ship)
+        time.sleep(1)
+
+    elif playernumber == 2:
+        os.system('clear')
+        print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
+        print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
+        boardhandle.print_board(boardhandle.p2attack)
+        print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
+        boardhandle.print_board(boardhandle.p2ship)
+        time.sleep(1)
 
         if playernumber == 1:
             for i in range(len(p2shipcord)):
@@ -134,20 +138,6 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
                                     y = int(p1shipcord[i][cord][1] + p1shipcord[i][cord][2])
                                 attackboard[y][x] = '\x1b[1;32;45m' + "Y" + '\x1b[0m'
                                 shipboard[y][x] = '\x1b[1;31;45m' + "Y" + '\x1b[0m'
-
-    os.system('clear')
-    if playernumber == 1:
-        print('\x1b[6;30;42m' + 'Player ' + str(playernumber) + '\x1b[0m')
-    else:
-        print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
-    if (playernumber == 2) and (AI == 1):
-        pass
-    else:
-        print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
-        boardhandle.print_board(attackboard)
-        print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
-        boardhandle.print_board(boardhandle.p2ship)
-        time.sleep(1)
 
 
 def nextplayer(playernumber, AI):
