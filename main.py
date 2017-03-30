@@ -6,6 +6,7 @@ import attack
 import boardhandle
 import shipboard_setup
 from copy import deepcopy
+import sound
 p1shipcord = []
 p2shipcord = []
 
@@ -19,6 +20,8 @@ def main():
     prints.selecthelp(ships)
     start = input("")
     AI = prints.ai_or_player()
+    sound.play_sound("start")
+
     currentboard = boardhandle.p1ship
 
     p1shipcord = deepcopy(shipboard_setup.select_ships(1, ships, currentboard, AI))
