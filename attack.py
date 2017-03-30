@@ -7,7 +7,7 @@ p1attack = []
 p2attack = []
 
 
-def attack(playernumber, currentboard, AI):
+def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
     validrow = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     validcolumn = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     os.system('clear')
@@ -92,19 +92,40 @@ def attack(playernumber, currentboard, AI):
         print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
         attackboard[y][x] = '\x1b[1;32;40m' + "V" + '\x1b[0m'
         shipboard[y][x] = '\x1b[1;31;40m' + "V" + '\x1b[0m'
-        os.system('clear')
-        if playernumber == 1:
-            print('\x1b[6;30;42m' + 'Player ' + str(playernumber) + '\x1b[0m')
-        else:
-            print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
-        if (playernumber == 2) and (AI == 1):
-            pass
-        else:
-            print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
-            boardhandle.print_board(attackboard)
-            print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
-            boardhandle.print_board(boardhandle.p2ship)
-            time.sleep(1)
+
+        print("p1shhipcord", p1shipcord)                  # testing the attackcord
+        print("p2shhipcord", p2shipcord)
+        print()
+        print("attackcord", attackcord)
+        print("playernumber", playernumber)
+        w = input()
+        indices = str([i for i, s in enumerate(p2shipcord[0]) if str(attackcord) in s])
+        print("attackcord index", indices)
+        w = input()
+
+
+"""
+        for i in range(len(p2shipcord)):
+            for j in p2shipcord[i]:
+                print("asdf", p2shipcord[p2shipcord.index(i)][p2shipcord.index(j)])
+                # if attackcord in p2shipcord[p2shipcord.index(i)][p2shipcord.index(j)]:
+                #   p2shipcord[p2shipcord.index(i)][p2shipcord.index(j)][-1] = "-"
+        print("p2shhipcord", p2shipcord)
+"""
+
+    os.system('clear')
+    if playernumber == 1:
+        print('\x1b[6;30;42m' + 'Player ' + str(playernumber) + '\x1b[0m')
+    else:
+        print('\x1b[6;30;43m' + 'Player ' + str(playernumber) + '\x1b[0m')
+    if (playernumber == 2) and (AI == 1):
+        pass
+    else:
+        print('\x1b[1;31;40m' + "Attackboard" + '\x1b[0m')
+        boardhandle.print_board(attackboard)
+        print('\x1b[1;34;40m' + "Shipboard" + '\x1b[0m')
+        boardhandle.print_board(boardhandle.p2ship)
+        time.sleep(1)
 
 
 def nextplayer(playernumber, AI):

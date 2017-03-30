@@ -100,13 +100,13 @@ def addship(length, currentboard, playernumber, AI):
     if shipparameter[0] == "H":
         for i in range(length):
             currentboard[y][x + i] = "O"
-            sc = str(y) + str(x + i)
+            sc = str(validcolumn[x - 1 + i]) + str(y) + "+"  # "+" added as switcher character
             shipcord0.append(sc)
         shipcord.append(shipcord0)
     else:
         for i in range(length):
             currentboard[y + i][x] = "O"
-            sc = str(y + i) + str(x)
+            sc = str(validcolumn[x - 1]) + str(y + i) + "+"  # "+" added as switcher character
             shipcord0.append(sc)
         shipcord.append(shipcord0)
 

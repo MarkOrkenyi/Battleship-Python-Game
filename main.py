@@ -5,6 +5,7 @@ import settings
 import attack
 import boardhandle
 import shipboard_setup
+from copy import deepcopy
 p1shipcord = []
 p2shipcord = []
 
@@ -19,14 +20,22 @@ def main():
     start = input("")
     AI = prints.ai_or_player()
     currentboard = boardhandle.p1ship
-    p1shipcord = shipboard_setup.select_ships(1, ships, currentboard, AI)
+
+    p1shipcord = deepcopy(shipboard_setup.select_ships(1, ships, currentboard, AI))
+    print(p1shipcord)
+    w = input("this p1shipcord in main")
+
     os.system('clear')
     print()
     print()
     boardhandle.print_board(boardhandle.p1ship)
     confirm = input("Press enter to continue")
     currentboard = boardhandle.p2ship
-    p2shipcord = shipboard_setup.select_ships(2, ships, currentboard, AI)
+
+    p2shipcord = deepcopy(shipboard_setup.select_ships(2, ships, currentboard, AI))
+    print(p2shipcord)
+    w = input("this p2shipcord in main")
+
     os.system('clear')
     print()
     print()
@@ -42,7 +51,7 @@ def main():
         alivep1 = 0
         alivep2 = 0
         attack.nextplayer(playernumber, AI)
-        attack.attack(playernumber, currentboard, AI)
+        attack.attack(playernumber, currentboard, AI, p1shipcord, p2shipcord)
         if playernumber == 1:
             playernumber = 2
         else:
