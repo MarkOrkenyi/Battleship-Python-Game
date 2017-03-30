@@ -127,7 +127,7 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
                                 y = int(p2shipcord[i][cord][1])
                             elif len(p2shipcord[i][cord]) == 4:
                                 y = int(p2shipcord[i][cord][1] + p2shipcord[i][cord][2])
-                            attackboard[y][x] = '\x1b[0;37;41m' + "S" + '\x1b[0m'
+                            attackboard[y][x] = '\x1b[0;37;42m' + "S" + '\x1b[0m'
                             shipboard[y][x] = '\x1b[0;37;41m' + "S" + '\x1b[0m'
     elif playernumber == 2:
         for i in range(len(p1shipcord)):
@@ -142,7 +142,7 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
                                 y = int(p1shipcord[i][cord][1])
                             elif len(p1shipcord[i][cord]) == 4:
                                 y = int(p1shipcord[i][cord][1] + p1shipcord[i][cord][2])
-                            attackboard[y][x] = '\x1b[0;37;41m' + "S" + '\x1b[0m'
+                            attackboard[y][x] = '\x1b[0;37;42m' + "S" + '\x1b[0m'
                             shipboard[y][x] = '\x1b[0;37;41m' + "S" + '\x1b[0m'
 
 
