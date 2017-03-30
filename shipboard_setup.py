@@ -20,6 +20,7 @@ def addship(length, currentboard, playernumber, AI):
         orient = random.choice(HV)
     else:
         orient = input("Enter H or V: ")
+        orient = orient.upper()
         while True:
             if orient == "V":
                 break
@@ -35,6 +36,7 @@ def addship(length, currentboard, playernumber, AI):
             c = x_ai + y_ai
         else:
             c = input("Enter the origin of your ship (ex. A4): ")
+            c = c.upper()
             try:
                 int(c[1])
             except IndexError:

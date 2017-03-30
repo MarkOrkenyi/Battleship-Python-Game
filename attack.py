@@ -41,7 +41,7 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
             attackcord = x_ai + y_ai
         else:
             attackcord = input("Enter a coordinate to attack (ex. A4): ")
-
+            attackcord = attackcord.upper()
             try:
                 int(attackcord[1])
             except IndexError:
