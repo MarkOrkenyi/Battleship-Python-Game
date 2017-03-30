@@ -113,6 +113,7 @@ def addship(length, currentboard, playernumber, AI):
 
 
 def select_ships(playernumber, ships, currentboard, AI):
+    '''Adds a ship with the given length to the current players shipboard'''
     del shipcord[:]
     for a in range(ships):
         os.system('clear')

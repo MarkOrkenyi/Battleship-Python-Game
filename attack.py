@@ -9,6 +9,7 @@ p2attack = []
 
 
 def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
+    '''Asks for a coordinate to attack on the enemy's shipboard, then displays the result'''
     validrow = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     validcolumn = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     os.system('clear')
@@ -126,8 +127,8 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
                                 y = int(p2shipcord[i][cord][1])
                             elif len(p2shipcord[i][cord]) == 4:
                                 y = int(p2shipcord[i][cord][1] + p2shipcord[i][cord][2])
-                            attackboard[y][x] = '\x1b[1;32;45m' + "Y" + '\x1b[0m'
-                            shipboard[y][x] = '\x1b[1;31;45m' + "Y" + '\x1b[0m'
+                            attackboard[y][x] = '\x1b[0;31;40m' + "Y" + '\x1b[0m'
+                            shipboard[y][x] = '\x1b[0;31;40m' + "Y" + '\x1b[0m'
     elif playernumber == 2:
         for i in range(len(p1shipcord)):
             count = 0
@@ -141,11 +142,12 @@ def attack(playernumber, currentboard, AI, p1shipcord, p2shipcord):
                                 y = int(p1shipcord[i][cord][1])
                             elif len(p1shipcord[i][cord]) == 4:
                                 y = int(p1shipcord[i][cord][1] + p1shipcord[i][cord][2])
-                            attackboard[y][x] = '\x1b[1;32;45m' + "Y" + '\x1b[0m'
-                            shipboard[y][x] = '\x1b[1;31;45m' + "Y" + '\x1b[0m'
+                            attackboard[y][x] = '\x1b[0;31;40m' + "Y" + '\x1b[0m'
+                            shipboard[y][x] = '\x1b[0;31;40m' + "Y" + '\x1b[0m'
 
 
 def nextplayer(playernumber, AI):
+    '''Displays a message, that which Player is next'''
     os.system('clear')
     waittimer = 1
     print('\x1b[1;31;40m' + "Player", playernumber, "'s turn will begin in", waittimer, " seconds!" + '\x1b[0m')

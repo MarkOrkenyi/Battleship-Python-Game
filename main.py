@@ -9,11 +9,11 @@ from copy import deepcopy
 import sound
 p1shipcord = []
 p2shipcord = []
-
 ships = 2
 
 
 def main():
+    # start screens and game informations
     os.system('clear')
     prints.startscreen()
     start = input("")
@@ -21,20 +21,16 @@ def main():
     start = input("")
     AI = prints.ai_or_player()
     sound.play_sound("start")
-
+    # ship selection beginning
     currentboard = boardhandle.p1ship
-
     p1shipcord = deepcopy(shipboard_setup.select_ships(1, ships, currentboard, AI))
-
     os.system('clear')
     print()
     print()
     boardhandle.print_board(boardhandle.p1ship)
     confirm = input("Press enter to continue")
     currentboard = boardhandle.p2ship
-
     p2shipcord = deepcopy(shipboard_setup.select_ships(2, ships, currentboard, AI))
-
     os.system('clear')
     print()
     print()
@@ -44,7 +40,7 @@ def main():
         boardhandle.print_board(boardhandle.p2ship)
         confirm = input("Press enter to continue")
         os.system('clear')
-    # END OF SHIP SELECTION
+    # attack phase beginning
     playernumber = 1
     while True:
         alivep1 = 0
@@ -68,9 +64,11 @@ def main():
     if alivep1 == 0:
         os.system('clear')
         prints.player2won()
+        sound.play_sound("clap")
     elif alivep2 == 0:
         os.system('clear')
         prints.player1won()
+        sound.play_sound("clap")
     time.sleep(5)
 
 

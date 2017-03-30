@@ -2,6 +2,7 @@
 
 # Function to creat empty field
 def empty_board(matrix):
+    '''Creates empty gameboards'''
     for i in range(11):
         matrix.append([])
         for j in range(11):
@@ -15,6 +16,7 @@ def empty_board(matrix):
 
 
 def print_board(matrix):
+    '''Prints out given board'''
     for i in range(len(matrix)):
         if i == 0:
             for j in range(len(matrix[i])):
